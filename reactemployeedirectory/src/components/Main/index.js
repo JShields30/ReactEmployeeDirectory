@@ -1,53 +1,57 @@
 import React from "react";
-import Table from "../Table/index"
+import Table from "..//Table/index"
 import Api from "../../utils/Api"
 
 class Main extends React.Component {
-    state={
-        users:[],
-        search: ''
+    state = { 
+        users: [],
+        search: '',
+        filterUsers: [{}]
+        
     }
     componentDidMount() {
         Api.getUsers().then(results => {
-            this.setState({users: results.data.results})
-        
+            this.setState({ users: results.data.results })
         });
     }
-    handleSearch = (search) => {
+    handleFilteredUsers = () => {
+        
+        const newFilterUsers = this.state.users.filter(user =>{
+           return user.name.first.includes(this.state.search)  || user.name.last.includes(this.state.search)
+        })
+        this.setState({
+            filterUsers: newFilterUsers
+        })
     }
-   
-//     render() {
-//         return(
-//             <div>
-//             <Table users = {this.state.users} />
-//             </div>
-//         );
-//     }
-// }
-render() {
-    return (
-        <div>
-            <form
-                class="form-inline justify-content-center md-form mx-auto mb-4">
-                <input
-                    class="form-control mr-sm-2"
-                    type="text"
-                    placeholder="Search"
-                    aria-label="Search"
-                />
-                <button
-                    class="btn aqua-gradient btn-rounded btn-sm my-0"
-                    type="submit"
-                >Search</button>
-            </form>
-            {/* instead of passing this.state.users into the users property (which is an array) how about we instead pass a different array which is a filter of the users based state of search */}
-            <Table users={this.state.users} />
-        </div>
-    );
+    handleInputChange = e => {
+        //do generic input change to handle state of search
+        let value = e.target.value;
+        const name = e.target.name;
+        // Updating the input's state
+        this.setState({
+          [name]: value
+        });
+        handleFilteredUsers();
+    }
+    render() {
+        return (
+            <div>
+                <form
+                    className="form-inline justify-content-center md-form mx-auto mb-4">
+                    <input
+                        value={this.state.search}
+                        className="form-control mr-sm-2"
+                        type="text"
+                        placeholder="Search"
+                        ariaLabel="Search"
+                        name="search"
+                        onChange={this.handleInputChange}
+                    />
+                </form>
+                {/* instead of passing this.state.users into the users property (which is an array) how about we instead pass a different array which is a filter of the users based state of search */}
+                < Table users={this.state.filterUsers} />
+            </div>
+        );
+    }
 }
-}
-
-
-    
-
 export default Main;
