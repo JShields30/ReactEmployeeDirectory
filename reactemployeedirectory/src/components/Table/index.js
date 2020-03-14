@@ -9,7 +9,7 @@ return dobDate.toDateString();
   }
   return (
     <>
-    <SearchBar/>
+    {/* <SearchBar/> */}
 
     <table className="table table-bordered table-dark">
       <thead>
