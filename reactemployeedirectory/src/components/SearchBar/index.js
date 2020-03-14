@@ -1,7 +1,16 @@
 import React from "react";
 
 class SearchBar extends React.Component {
-  
+    // constructor() {
+    //   super();
+    //   this.state = {
+    //     search: ''
+    //   };
+    // }
+
+    // updateSearch(Table) {
+    //   this.setState({search: results.target.name})
+    // }
   render() {
     return (  
     <form 

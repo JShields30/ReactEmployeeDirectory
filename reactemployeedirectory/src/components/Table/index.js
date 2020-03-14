@@ -25,7 +25,7 @@ return dobDate.toDateString();
         {users.map(({ name, email, dob, phone, picture }) => {
           return (
             <tr>
-              <th scope="row"><img src={picture.large} alt=" Not Loading" /></th>
+              <th scope="row"><img src={picture.medium} alt=" Not Loading" /></th>
               <td>{name.first + " " + name.last}</td> 
               <td>{phone}</td> 
               <td>{email}</td> 
