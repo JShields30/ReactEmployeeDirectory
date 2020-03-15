@@ -50,7 +50,7 @@ class Main extends React.Component {
             value={this.state.search}
             className="form-control mr-sm-2"
             type="text"
-            placeholder="Search"
+            placeholder="Search by Name"
             aria-label="Search"
             name="search"
             onChange={this.handleInputChange}
