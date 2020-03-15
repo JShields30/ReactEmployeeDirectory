@@ -1,5 +1,4 @@
 import React from "react";
-import SearchBar from "../SearchBar";
 
 function Table({ users }) {
   function dobDate(date) {
@@ -7,7 +6,6 @@ function Table({ users }) {
 
     return dobDate.toDateString();
   }
-  console.log(users)
   return (
     <>
       {/* <SearchBar/> */}
@@ -23,30 +21,25 @@ function Table({ users }) {
           </tr>
         </thead>
         <tbody>
-          {users.length ? (
-            users.map((user, i) => {
-              let { name, picture, phone, email, dob } = user;
-              let dobDate = new Date(dob.date)
-              let formatDob = dobDate.toString().split(' ');
-              let string = `${formatDob[1]} ${formatDob[2]}, ${formatDob[3]}`
-              console.log(formatDob)
-              console.log(dobDate)
-              console.log(dob.date)
-              console.log(`name: ${name} \n picture: ${picture} \n phone: ${phone}`)
-              console.log(user)
-              return (
-                <tr key={`${user}-${i}`}>
-                  <th scope="row"><img src={picture.medium} alt=" Not Loading" /></th>
-                  <td>{name.first + " " + name.last}</td> 
-                  <td>{phone}</td> 
-                  <td>{email}</td> 
-              <td>{string}</td> 
-                </tr>
-              );
-            })
-          ) : (
-              null
-            )}
+          {users.length
+            ? users.map((user, i) => {
+                let { name, picture, phone, email, dob } = user;
+                let dobDate = new Date(dob.date);
+                let formatDob = dobDate.toString().split(" ");
+                let string = `${formatDob[1]} ${formatDob[2]}, ${formatDob[3]}`;
+                return (
+                  <tr key={`${user}-${i}`}>
+                    <th scope="row">
+                      <img src={picture.medium} alt=" Not Loading" />
+                    </th>
+                    <td>{name.first + " " + name.last}</td>
+                    <td>{phone}</td>
+                    <td>{email}</td>
+                    <td>{string}</td>
+                  </tr>
+                );
+              })
+            : null}
         </tbody>
       </table>
     </>
@@ -54,4 +47,3 @@ function Table({ users }) {
 }
 
 export default Table;
-
