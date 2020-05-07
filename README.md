@@ -1,13 +1,17 @@
 # React Employee Directory
 
+https://dashboard.heroku.com/apps/glacial-plateau-02354/activity
+
 ## Overview
+App that allows users the ability to search through a directory of employees to find specifically who they are searching for in the company. Search criteria for this app is only for by first and last name. App can be implemented with any companies directory and customized to search by department, name, or email. 
 
-For this assignment, you'll create a employee directory with React. This assignment will require you to break up your application's UI into components, manage component state, and respond to user events.
-
-## User Story
-
-A table of 200 random users, along with their picture, name, phone number, email address and date of birth reders when the user loads the page. The directory is also searchable by first and last name.  
-
+## Coding Languages Used
+* HTML
+* CSS
+* Javascript
+* Node.js
+* Mongo
+* React 
 
 
 
